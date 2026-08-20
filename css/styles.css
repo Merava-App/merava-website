@@ -1508,6 +1508,94 @@ h1, h2, h3, h4 {
   margin-bottom: 24px;
 }
 
+.dash-intro {
+  text-align: center;
+  margin: 12px 0 8px;
+}
+
+.dash-intro h1 {
+  font-size: 1.8rem;
+}
+
+.dash-intro .dash-sub {
+  margin-bottom: 0;
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.option-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 32px;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.option-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.option-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin-bottom: 22px;
+}
+
+.option-btn {
+  margin-top: auto;
+  pointer-events: none;
+}
+
+.option-card-active:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.option-card-disabled {
+  cursor: not-allowed;
+  background: var(--bg-alt);
+  color: var(--muted);
+}
+
+.option-card-disabled h2 {
+  color: var(--muted);
+}
+
+.option-card-disabled .option-btn {
+  opacity: 0.5;
+}
+
+.option-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--line);
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .option-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .dash-empty {
   color: var(--muted);
   font-size: 0.9rem;

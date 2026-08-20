@@ -65,7 +65,7 @@ signInForm.addEventListener('submit', async (e) => {
     return;
   }
 
-  window.location.href = 'dashboard.html';
+  window.location.href = 'dashboard-home.html';
 });
 
 function looksLikeExistingAccount(signUpData, signUpError) {
@@ -143,5 +143,5 @@ signUpForm.addEventListener('submit', async (e) => {
     return;
   }
 
-  window.location.href = 'dashboard.html';
+  window.location.href = 'dashboard-home.html';
 });
