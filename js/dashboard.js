@@ -239,6 +239,7 @@ classForm.addEventListener('submit', async (e) => {
     default_duration: numberOrNull(classForm.default_duration.value),
     default_capacity: numberOrNull(classForm.default_capacity.value),
     default_instructor: classForm.default_instructor.value.trim() || null,
+    studio_class_price: numberOrNull(classForm.studio_class_price.value),
   };
 
   classSubmitBtn.disabled = true;
