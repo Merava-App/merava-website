@@ -1320,6 +1320,8 @@ h1, h2, h3, h4 {
   flex-direction: column;
   gap: 6px;
   margin-bottom: 16px;
+  border: none;
+  min-width: 0;
 }
 
 .form-field > span,
@@ -1394,8 +1396,40 @@ h1, h2, h3, h4 {
   cursor: pointer;
 }
 
+/* Custom-drawn instead of relying on accent-color: native checkbox widgets
+   render inconsistently (wrong size/position) across browsers when boxed
+   into a compact pill like this, so appearance:none + a hand-drawn check
+   sidesteps that entirely. */
 .tag-checkbox input {
-  accent-color: var(--purple);
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  flex: none;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid var(--line);
+  border-radius: 4px;
+  background: var(--white);
+  position: relative;
+  cursor: pointer;
+}
+
+.tag-checkbox input:checked {
+  background: var(--purple);
+  border-color: var(--purple);
+}
+
+.tag-checkbox input:checked::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* ---------- Dashboard (dashboard.html) ---------- */
