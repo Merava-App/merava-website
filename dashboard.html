@@ -107,7 +107,7 @@
           <textarea name="description" rows="3"></textarea>
         </label>
 
-        <div class="form-grid form-grid-4">
+        <div class="form-grid form-grid-5">
           <label class="form-field">
             <span>Default credits</span>
             <input type="number" name="default_credit_cost" min="0" required>
@@ -124,12 +124,11 @@
             <span>Default instructor</span>
             <input type="text" name="default_instructor">
           </label>
+          <label class="form-field">
+            <span>Studio price ($)</span>
+            <input type="number" name="studio_class_price" min="0" step="0.01" required>
+          </label>
         </div>
-
-        <label class="form-field">
-          <span>Studio class price ($)</span>
-          <input type="number" name="studio_class_price" min="0" step="0.01" required>
-        </label>
 
         <fieldset class="form-field">
           <legend>Tags</legend>

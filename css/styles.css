@@ -1367,6 +1367,10 @@ h1, h2, h3, h4 {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.form-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .form-alert {
   font-size: 0.86rem;
   font-weight: 600;
@@ -1600,7 +1604,8 @@ h1, h2, h3, h4 {
 @media (max-width: 640px) {
   .form-grid,
   .form-grid-3,
-  .form-grid-4 {
+  .form-grid-4,
+  .form-grid-5 {
     grid-template-columns: 1fr;
   }
 
