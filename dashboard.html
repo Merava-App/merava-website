@@ -99,20 +99,16 @@
           </label>
           <label class="form-field">
             <span>Image URL</span>
-            <input type="url" name="image" placeholder="https://...">
+            <input type="url" name="image" required placeholder="https://...">
           </label>
         </div>
 
         <label class="form-field">
           <span>Description</span>
-          <textarea name="description" rows="3"></textarea>
+          <textarea name="description" rows="3" required></textarea>
         </label>
 
-        <div class="form-grid form-grid-5">
-          <label class="form-field">
-            <span>Default credits</span>
-            <input type="number" name="default_credit_cost" min="0" required>
-          </label>
+        <div class="form-grid form-grid-4">
           <label class="form-field">
             <span>Default duration (min)</span>
             <input type="number" name="default_duration" min="0" required>
@@ -123,16 +119,17 @@
           </label>
           <label class="form-field">
             <span>Default instructor</span>
-            <input type="text" name="default_instructor">
+            <input type="text" name="default_instructor" required>
           </label>
           <label class="form-field">
-            <span>Studio price ($)</span>
+            <span>Class price ($)</span>
             <input type="number" name="studio_class_price" min="0" step="0.01" required>
           </label>
         </div>
+        <p class="field-note">Credits shown to customers are calculated automatically from this price.</p>
 
         <fieldset class="form-field">
-          <legend>Tags</legend>
+          <legend>Tags <span class="required-note">(pick at least one)</span></legend>
           <div id="tagCheckboxes" class="tag-checkboxes"></div>
         </fieldset>
 

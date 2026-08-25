@@ -69,10 +69,9 @@ signInForm.addEventListener('submit', async (e) => {
 });
 
 function looksLikeExistingAccount(signUpData, signUpError) {
-  // A person can be both a merava customer and a business owner under the
-  // same email — there's only ever one auth account per email, so "sign up"
-  // for someone who already has a customer account really means "sign me
-  // into that account and add business access to it". Supabase signals an
+  // Business and customer accounts must now use different emails — this
+  // just detects the "already registered" case so it can be reported
+  // clearly, not to fold it into an upgrade anymore. Supabase signals an
   // already-registered email two different ways depending on whether email
   // confirmation is on: either an error, or (to avoid leaking which emails
   // are registered) a "successful" signup whose user has no identities.
@@ -91,24 +90,19 @@ signUpForm.addEventListener('submit', async (e) => {
   const email = signUpForm.email.value.trim();
   const password = signUpForm.password.value;
 
-  let { data, error } = await supabase.auth.signUp({ email, password });
+  const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (looksLikeExistingAccount(data, error)) {
-    // Fold the "email already has a customer account" case into a normal
-    // sign-in, so entering that account's real password links it instead
-    // of erroring out.
-    ({ data, error } = await supabase.auth.signInWithPassword({ email, password }));
+    setLoading(signUpForm, false);
+    setStatus(
+      signUpStatus,
+      'An account with this email already exists. Business accounts need a different email than your merava customer account — try signing in above if this is already a business account.',
+      'error'
+    );
+    return;
+  }
 
-    if (error) {
-      setLoading(signUpForm, false);
-      setStatus(
-        signUpStatus,
-        'An account with this email already exists. Enter its password above to add business access to it, or use Sign In if it already has business access.',
-        'error'
-      );
-      return;
-    }
-  } else if (error) {
+  if (error) {
     setLoading(signUpForm, false);
     setStatus(signUpStatus, error.message, 'error');
     return;
