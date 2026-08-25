@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Waitlist signup forms — insert into the `waitlist_signups` Supabase table.
+  // Waitlist signup forms — insert into the `Waitlist_signups` Supabase table.
   // See supabase/waitlist_signups.sql for the table + RLS policy definition.
   document.querySelectorAll('.signup-form').forEach((form) => {
     form.addEventListener('submit', async (e) => {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       status.classList.remove('form-alert-error', 'form-alert-success');
 
       const { error } = await supabase
-        .from('waitlist_signups')
+        .from('Waitlist_signups')
         .insert({ email, audience: kind });
 
       submitBtn.disabled = false;
