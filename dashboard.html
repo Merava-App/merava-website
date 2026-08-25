@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard — merava for Business</title>
-  <meta name="description" content="Manage your studio, classes, and sessions on merava.">
+  <meta name="description" content="Your studio's classes, sessions, and bookings at a glance.">
   <meta name="robots" content="noindex">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,131 +15,60 @@
 </head>
 <body class="biz-page dash-page">
 
-  <header class="dash-header">
-    <div class="wrap dash-header-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
-            <path d="M11 20V12L16 17L21 12V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        merava <span class="dash-badge">Business</span>
-      </a>
+  <div class="app-shell" id="appShell">
+    <div id="sidebarRoot"></div>
 
-      <div class="dash-header-actions">
-        <a href="dashboard-home.html" class="btn btn-ghost">Back</a>
-        <span id="dashUserEmail" class="dash-user-email"></span>
-        <button id="signOutBtn" type="button" class="btn btn-ghost">Sign Out</button>
+    <main class="app-main">
+      <div class="app-main-inner">
+        <div class="app-page-header">
+          <div>
+            <h1 id="studioNameHeading">Dashboard</h1>
+            <p class="app-page-sub">Here's how your studio is doing.</p>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="stat-card">
+            <span class="stat-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="4.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="10.75" width="18" height="4.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="17.5" width="18" height="4.5" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+            </span>
+            <span class="stat-card-value" id="statClasses">—</span>
+            <span class="stat-card-label">Total Classes</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="5" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </span>
+            <span class="stat-card-value" id="statUpcoming">—</span>
+            <span class="stat-card-label">Upcoming Sessions</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 12a8 8 0 1 1 16 0 8 8 0 0 1-16 0Z" stroke="currentColor" stroke-width="1.8"/><path d="M9.5 12.5l1.8 1.8L15 10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="stat-card-value" id="statBookings">—</span>
+            <span class="stat-card-label">Total Bookings</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 17l5-5 4 4 8-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="stat-card-value" id="statMonthly">—</span>
+            <span class="stat-card-label">Bookings This Month</span>
+          </div>
+        </div>
+
+        <section class="dash-card">
+          <h2>Upcoming Sessions</h2>
+          <p class="dash-sub">Your studio's next scheduled sessions, soonest first.</p>
+          <div id="upcomingList" class="upcoming-list"></div>
+        </section>
       </div>
-    </div>
-  </header>
-
-  <main class="wrap dash-main">
-    <section id="studioSection" class="dash-card">
-      <h2>Your Studio</h2>
-      <p class="dash-sub">This profile is what customers see in the merava app.</p>
-
-      <form id="studioForm" class="dash-form">
-        <div class="form-grid">
-          <label class="form-field">
-            <span>Studio name</span>
-            <input type="text" name="name" required placeholder="Climb On">
-          </label>
-          <label class="form-field">
-            <span>Image URL</span>
-            <input type="url" name="image" placeholder="https://...">
-          </label>
-        </div>
-
-        <label class="form-field">
-          <span>Address</span>
-          <input type="text" name="address" required placeholder="123 King St West">
-        </label>
-
-        <div class="form-grid form-grid-3">
-          <label class="form-field">
-            <span>City</span>
-            <input type="text" name="city">
-          </label>
-          <label class="form-field">
-            <span>Province</span>
-            <input type="text" name="province">
-          </label>
-          <label class="form-field">
-            <span>Postal code</span>
-            <input type="text" name="postal_code">
-          </label>
-        </div>
-
-        <label class="form-field">
-          <span>Country</span>
-          <input type="text" name="country">
-        </label>
-
-        <label class="form-field">
-          <span>Description</span>
-          <textarea name="description" rows="4" placeholder="Tell customers what your studio is about"></textarea>
-        </label>
-
-        <p id="studioStatus" class="form-alert" role="status"></p>
-        <button type="submit" id="studioSubmitBtn" class="btn btn-primary">Save Studio</button>
-      </form>
-    </section>
-
-    <section id="classesSection" class="dash-card" hidden>
-      <h2>Classes</h2>
-      <p class="dash-sub">Add a class, then add specific dates and times as sessions below it.</p>
-
-      <form id="classForm" class="dash-form">
-        <div class="form-grid">
-          <label class="form-field">
-            <span>Class title</span>
-            <input type="text" name="title" required placeholder="Bouldering 101">
-          </label>
-          <label class="form-field">
-            <span>Image URL</span>
-            <input type="url" name="image" required placeholder="https://...">
-          </label>
-        </div>
-
-        <label class="form-field">
-          <span>Description</span>
-          <textarea name="description" rows="3" required></textarea>
-        </label>
-
-        <div class="form-grid form-grid-4">
-          <label class="form-field">
-            <span>Default duration (min)</span>
-            <input type="number" name="default_duration" min="0" required>
-          </label>
-          <label class="form-field">
-            <span>Default capacity</span>
-            <input type="number" name="default_capacity" min="0" required>
-          </label>
-          <label class="form-field">
-            <span>Default instructor</span>
-            <input type="text" name="default_instructor" required>
-          </label>
-          <label class="form-field">
-            <span>Class price ($)</span>
-            <input type="number" name="studio_class_price" min="0" step="0.01" required>
-          </label>
-        </div>
-        <p class="field-note">Credits shown to customers are calculated automatically from this price.</p>
-
-        <fieldset class="form-field">
-          <legend>Tags <span class="required-note">(pick at least one)</span></legend>
-          <div id="tagCheckboxes" class="tag-checkboxes"></div>
-        </fieldset>
-
-        <p id="classStatus" class="form-alert" role="status"></p>
-        <button type="submit" id="classSubmitBtn" class="btn btn-primary">Add Class</button>
-      </form>
-
-      <div id="classList" class="class-list"></div>
-    </section>
-  </main>
+    </main>
+  </div>
 
   <script type="module" src="js/dashboard.js"></script>
 </body>

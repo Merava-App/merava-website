@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Settings — merava for Business</title>
+  <meta name="description" content="Edit your studio's profile.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="biz-page dash-page">
+
+  <div class="app-shell" id="appShell">
+    <div id="sidebarRoot"></div>
+
+    <main class="app-main">
+      <div class="app-main-inner">
+        <div class="app-page-header">
+          <div>
+            <h1>Studio Settings</h1>
+            <p class="app-page-sub">This profile is what customers see in the merava app.</p>
+          </div>
+        </div>
+
+        <section class="dash-card">
+          <form id="studioForm" class="dash-form">
+            <div class="form-grid">
+              <label class="form-field">
+                <span>Studio name</span>
+                <input type="text" name="name" required placeholder="Climb On">
+              </label>
+              <label class="form-field">
+                <span>Image URL</span>
+                <input type="url" name="image" placeholder="https://...">
+              </label>
+            </div>
+
+            <label class="form-field">
+              <span>Address</span>
+              <input type="text" name="address" required placeholder="123 King St West">
+            </label>
+
+            <div class="form-grid form-grid-3">
+              <label class="form-field">
+                <span>City</span>
+                <input type="text" name="city">
+              </label>
+              <label class="form-field">
+                <span>Province</span>
+                <input type="text" name="province">
+              </label>
+              <label class="form-field">
+                <span>Postal code</span>
+                <input type="text" name="postal_code">
+              </label>
+            </div>
+
+            <label class="form-field">
+              <span>Country</span>
+              <input type="text" name="country">
+            </label>
+
+            <label class="form-field">
+              <span>Description</span>
+              <textarea name="description" rows="4" placeholder="Tell customers what your studio is about"></textarea>
+            </label>
+
+            <p id="studioStatus" class="form-alert" role="status"></p>
+            <button type="submit" id="studioSubmitBtn" class="btn btn-primary">Save Studio</button>
+          </form>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/studio-settings.js"></script>
+</body>
+</html>

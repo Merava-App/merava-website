@@ -1,4 +1,6 @@
 import { supabase } from './supabase-client.js';
+import { requireBusinessUserWithStudio } from './business-guard.js';
+import { renderSidebar } from './sidebar.js';
 import {
   escapeHtml,
   escapeAttr,
@@ -19,9 +21,6 @@ let allTags = [];
 
 const expandedSessionIds = new Set();
 let editingSessionId = null;
-
-const dashUserEmail = document.querySelector('#dashUserEmail');
-const signOutBtn = document.querySelector('#signOutBtn');
 
 const loadingState = document.querySelector('#loadingState');
 const notFoundState = document.querySelector('#notFoundState');
@@ -53,29 +52,11 @@ async function init() {
     return;
   }
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const ctx = await requireBusinessUserWithStudio();
+  if (!ctx) return;
 
-  if (!session) {
-    window.location.href = 'business-login.html';
-    return;
-  }
-
-  const { data: profile, error: profileError } = await supabase
-    .from('Profiles')
-    .select('is_business')
-    .eq('id', session.user.id)
-    .single();
-
-  if (profileError || !profile?.is_business) {
-    await supabase.auth.signOut();
-    window.location.href = 'business-login.html?denied=1';
-    return;
-  }
-
-  currentUser = session.user;
-  dashUserEmail.textContent = currentUser.email;
+  currentUser = ctx.user;
+  renderSidebar({ activePage: 'classes', user: currentUser });
 
   const { data: tagsData, error: tagsError } = await supabase
     .from('Tags')
@@ -488,7 +469,3 @@ sessionForm.addEventListener('submit', async (e) => {
   await loadClass();
 });
 
-signOutBtn.addEventListener('click', async () => {
-  await supabase.auth.signOut();
-  window.location.href = 'business-login.html';
-});

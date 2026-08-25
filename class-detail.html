@@ -15,27 +15,13 @@
 </head>
 <body class="biz-page dash-page">
 
-  <header class="dash-header">
-    <div class="wrap dash-header-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
-            <path d="M11 20V12L16 17L21 12V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        merava <span class="dash-badge">Business</span>
-      </a>
+  <div class="app-shell" id="appShell">
+    <div id="sidebarRoot"></div>
 
-      <div class="dash-header-actions">
-        <a href="dashboard.html" class="btn btn-ghost">← Back</a>
-        <span id="dashUserEmail" class="dash-user-email"></span>
-        <button id="signOutBtn" type="button" class="btn btn-ghost">Sign Out</button>
-      </div>
-    </div>
-  </header>
+    <main class="app-main">
+      <div class="app-main-inner">
+    <a href="classes.html" class="app-breadcrumb">← Back to Classes</a>
 
-  <main class="wrap dash-main">
     <div id="loadingState" class="dash-empty">Loading class…</div>
 
     <div id="classContent" hidden>
@@ -146,7 +132,9 @@
     </div>
 
     <div id="notFoundState" class="dash-empty" hidden>Class not found.</div>
-  </main>
+      </div>
+    </main>
+  </div>
 
   <script type="module" src="js/class-detail.js"></script>
 </body>

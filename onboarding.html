@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Set Up Your Studio — merava for Business</title>
+  <meta name="description" content="Choose how to get your studio and classes into merava.">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="biz-page dash-page">
+
+  <header class="dash-header">
+    <div class="wrap dash-header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="16" cy="16" r="15" stroke="currentColor" stroke-width="2"/>
+            <path d="M11 20V12L16 17L21 12V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        merava <span class="dash-badge">Business</span>
+      </a>
+
+      <div class="dash-header-actions">
+        <span id="dashUserEmail" class="dash-user-email"></span>
+        <button id="signOutBtn" type="button" class="btn btn-ghost">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap dash-main">
+    <section class="dash-intro" id="introSection">
+      <h1>How do you want to add your data?</h1>
+      <p class="dash-sub">Choose how to get your studio and classes into merava. This is a one-time setup step.</p>
+    </section>
+
+    <div class="option-grid" id="optionGrid">
+      <div class="option-card option-card-disabled">
+        <span class="option-badge">Coming soon</span>
+        <h2>Update with API</h2>
+        <p>Sync your studio's schedule automatically from your own booking system.</p>
+        <span class="btn btn-outline option-btn" aria-disabled="true">Connect API</span>
+      </div>
+
+      <button type="button" class="option-card option-card-active" id="manualEntryBtn">
+        <h2>Manual Entry</h2>
+        <p>Add your studio profile yourself, then add classes and sessions after.</p>
+        <span class="btn btn-primary option-btn">Get Started</span>
+      </button>
+    </div>
+
+    <section class="dash-card" id="studioSection" hidden>
+      <h2>Your Studio</h2>
+      <p class="dash-sub">This profile is what customers see in the merava app.</p>
+
+      <form id="studioForm" class="dash-form">
+        <div class="form-grid">
+          <label class="form-field">
+            <span>Studio name</span>
+            <input type="text" name="name" required placeholder="Climb On">
+          </label>
+          <label class="form-field">
+            <span>Image URL</span>
+            <input type="url" name="image" placeholder="https://...">
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Address</span>
+          <input type="text" name="address" required placeholder="123 King St West">
+        </label>
+
+        <div class="form-grid form-grid-3">
+          <label class="form-field">
+            <span>City</span>
+            <input type="text" name="city">
+          </label>
+          <label class="form-field">
+            <span>Province</span>
+            <input type="text" name="province">
+          </label>
+          <label class="form-field">
+            <span>Postal code</span>
+            <input type="text" name="postal_code">
+          </label>
+        </div>
+
+        <label class="form-field">
+          <span>Country</span>
+          <input type="text" name="country">
+        </label>
+
+        <label class="form-field">
+          <span>Description</span>
+          <textarea name="description" rows="4" placeholder="Tell customers what your studio is about"></textarea>
+        </label>
+
+        <p id="studioStatus" class="form-alert" role="status"></p>
+        <button type="submit" id="studioSubmitBtn" class="btn btn-primary">Save Studio &amp; Continue</button>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="js/onboarding.js"></script>
+</body>
+</html>

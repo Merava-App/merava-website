@@ -65,7 +65,13 @@ signInForm.addEventListener('submit', async (e) => {
     return;
   }
 
-  window.location.href = 'dashboard-home.html';
+  const { data: studio } = await supabase
+    .from('Studios')
+    .select('id')
+    .eq('owner_id', data.user.id)
+    .maybeSingle();
+
+  window.location.href = studio ? 'dashboard.html' : 'onboarding.html';
 });
 
 function looksLikeExistingAccount(signUpData, signUpError) {
@@ -137,5 +143,5 @@ signUpForm.addEventListener('submit', async (e) => {
     return;
   }
 
-  window.location.href = 'dashboard-home.html';
+  window.location.href = 'onboarding.html';
 });
