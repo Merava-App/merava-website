@@ -36,8 +36,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="business-login.html" class="btn btn-ghost">Sign In</a>
-        <a href="business-login.html?mode=signup" class="btn btn-primary">Partner With Us</a>
+        <a href="#signup" class="btn btn-primary">Join Waitlist</a>
       </div>
 
       <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -61,7 +60,7 @@
           </p>
 
           <div class="hero-ctas">
-            <a href="business-login.html?mode=signup" class="btn btn-primary btn-lg">Partner with us</a>
+            <a href="#signup" class="btn btn-primary btn-lg">Join the waitlist</a>
             <a href="index.html" class="btn btn-outline btn-outline-light btn-lg">I'm a customer</a>
           </div>
 
@@ -213,10 +212,13 @@
       <div class="wrap signup-inner signup-inner-single">
         <div class="signup-card reveal">
           <h3>Own a studio or run classes?</h3>
-          <p>Create your business account and list your studio in minutes.</p>
-          <a href="business-login.html?mode=signup" class="btn btn-primary btn-lg auth-submit">Create Business Account</a>
+          <p>Join the waitlist and be the first to list your studio when we launch.</p>
+          <form class="signup-form" data-form="business">
+            <input type="email" required placeholder="you@example.com" aria-label="Email address">
+            <button type="submit" class="btn btn-primary">Join Waitlist</button>
+          </form>
+          <p class="form-status" data-status="business" role="status"></p>
           <p class="signup-crosslink">
-            Already have an account? <a href="business-login.html">Sign in &rarr;</a><br>
             Looking for classes instead? <a href="index.html">Go to the customer page &rarr;</a>
           </p>
         </div>
@@ -267,6 +269,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

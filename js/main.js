@@ -1,3 +1,5 @@
+import { supabase } from './supabase-client.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Merava site loaded');
 
@@ -53,20 +55,45 @@ document.addEventListener('DOMContentLoaded', () => {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // Signup forms — client-side only for now.
-  // Replace this with a real request to your email/CRM provider
-  // (Mailchimp, Supabase table insert, etc.) before launch.
+  // Waitlist signup forms — insert into the `waitlist_signups` Supabase table.
+  // See supabase/waitlist_signups.sql for the table + RLS policy definition.
   document.querySelectorAll('.signup-form').forEach((form) => {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const kind = form.dataset.form;
       const status = document.querySelector(`[data-status="${kind}"]`);
       const emailInput = form.querySelector('input[type="email"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const email = emailInput.value.trim();
 
-      if (!emailInput.value) return;
+      if (!email) return;
 
-      status.textContent = "Thanks — we'll be in touch soon!";
+      submitBtn.disabled = true;
+      status.textContent = 'Joining…';
+      status.classList.remove('form-alert-error', 'form-alert-success');
+
+      const { error } = await supabase
+        .from('waitlist_signups')
+        .insert({ email, audience: kind });
+
+      submitBtn.disabled = false;
+
+      if (error) {
+        // Unique violation means this email is already on the list — treat that as success.
+        if (error.code === '23505') {
+          status.textContent = "You're already on the list — we'll be in touch soon!";
+          status.classList.add('form-alert-success');
+          form.reset();
+          return;
+        }
+        status.textContent = 'Something went wrong. Please try again.';
+        status.classList.add('form-alert-error');
+        return;
+      }
+
+      status.textContent = "Thanks — you're on the list!";
+      status.classList.add('form-alert-success');
       form.reset();
     });
   });
