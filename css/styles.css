@@ -1177,6 +1177,56 @@ html.js-enabled .reveal.is-visible {
 }
 
 @media (max-width: 760px) {
+  .hero {
+    padding-top: 52px;
+  }
+
+  .hero-inner {
+    gap: 28px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+    line-height: 1.08;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 32px;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+  }
+
+  .hero-stats {
+    gap: 20px 28px;
+    flex-wrap: wrap;
+  }
+
+  .hero-visual {
+    min-height: 320px;
+  }
+
+  .mock-stack {
+    max-width: 310px;
+  }
+
+  .mock-card {
+    padding: 12px;
+  }
+
+  .mock-card-b {
+    top: 150px;
+    left: 18px;
+  }
+
   .main-nav, .header-actions { display: none; }
   .nav-toggle { display: flex; }
 
@@ -1213,7 +1263,42 @@ html.js-enabled .reveal.is-visible {
 }
 
 @media (max-width: 520px) {
-  .hero-stats { gap: 22px; flex-wrap: wrap; }
+  .hero {
+    padding-top: 40px;
+  }
+
+  .hero-stats {
+    gap: 18px;
+  }
+
+  .hero-stats strong {
+    font-size: 1.2rem;
+  }
+
+  .hero-visual {
+    min-height: 280px;
+  }
+
+  .mock-stack {
+    max-width: 260px;
+  }
+
+  .mock-thumb {
+    width: 54px;
+    height: 54px;
+  }
+
+  .mock-title {
+    font-size: 0.88rem;
+  }
+
+  .mock-sub {
+    font-size: 0.74rem;
+  }
+
+  .mock-meta span {
+    font-size: 0.68rem;
+  }
 }
 
 /* ---------- About page ---------- */
