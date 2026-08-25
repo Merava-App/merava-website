@@ -1,40 +1,45 @@
 import { supabase } from './supabase-client.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.classList.add('js-enabled');
   console.log('Merava site loaded');
 
   // Sticky header shadow on scroll
   const header = document.getElementById('siteHeader');
-  const onScroll = () => {
-    if (window.scrollY > 12) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  };
-  onScroll();
-  window.addEventListener('scroll', onScroll, { passive: true });
+  if (header) {
+    const onScroll = () => {
+      if (window.scrollY > 12) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
   const headerActions = document.querySelector('.header-actions');
 
-  navToggle.addEventListener('click', () => {
-    const isOpen = mainNav.classList.toggle('open');
-    headerActions.classList.toggle('open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-    navToggle.classList.toggle('is-active', isOpen);
-  });
-
-  // Close mobile nav after tapping a link
-  document.querySelectorAll('.main-nav a, .header-actions a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mainNav.classList.remove('open');
-      headerActions.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
+  if (navToggle && mainNav && headerActions) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = mainNav.classList.toggle('open');
+      headerActions.classList.toggle('open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+      navToggle.classList.toggle('is-active', isOpen);
     });
-  });
+
+    // Close mobile nav after tapping a link
+    document.querySelectorAll('.main-nav a, .header-actions a').forEach((link) => {
+      link.addEventListener('click', () => {
+        mainNav.classList.remove('open');
+        headerActions.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // Scroll-triggered reveal animations
   const revealEls = document.querySelectorAll('.reveal');
