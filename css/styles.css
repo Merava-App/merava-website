@@ -1613,39 +1613,40 @@ h1, h2, h3, h4 {
   margin-top: 28px;
 }
 
-.class-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--bg);
-  overflow: hidden;
-}
-
-.class-card-head {
+.class-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  width: 100%;
   padding: 16px 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-body);
-  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
-.class-card-head-main {
+.class-row:hover {
+  border-color: var(--purple-light);
+  background: var(--white);
+  transform: translateY(-1px);
+}
+
+.class-row-main {
   display: flex;
   flex-direction: column;
   gap: 4px;
   min-width: 0;
 }
 
-.class-card-head h3 {
+.class-row-title {
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: 1.05rem;
+  color: var(--ink);
 }
 
-.class-card-meta {
+.class-row-meta {
   font-size: 0.82rem;
   color: var(--muted);
 }
@@ -1662,23 +1663,61 @@ h1, h2, h3, h4 {
   transform: rotate(-90deg);
 }
 
-.class-card-body {
-  padding: 0 20px 20px;
-  border-top: 1px solid var(--line);
-}
-
-.class-card-details {
+.class-detail-head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
-  padding-top: 16px;
+  margin-bottom: 18px;
 }
 
-.class-card-description {
+.class-detail-head h2 {
+  margin-bottom: 6px;
+}
+
+.class-detail-head .btn {
+  flex-shrink: 0;
+}
+
+.class-detail-description {
   color: var(--ink-soft);
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--purple-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.dash-card-danger {
+  border-color: #F3D2DA;
+  background: #FFF7F8;
+}
+
+.dash-card-danger h2 {
+  color: #C7254E;
+}
+
+.btn-danger {
+  background: #C7254E;
+  color: var(--white);
+  border: none;
+}
+
+.btn-danger:hover {
+  background: #A81E42;
 }
 
 .required-note {
